@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  h1 作者: #{author.name}
+  p 出生日期： #{author.date_of_birth_formatted} - #{author.date_of_death_formatted}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 著作
+    
+    dl
+      each book in author_books
+        dt 
+          a(href=book.url) #{book.title}
+        dd #{book.summary}
+
+      else
+        p 该作者无作品.
+      
+      hr
+      p
+        a(href=author.url+'/update') 更新
+      p
+        a(href=author.url+'/delete') 删除
